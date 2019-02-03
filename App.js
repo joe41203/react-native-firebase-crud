@@ -1,5 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import firebase from 'firebase';
+import firebaseConfig from './config/firebase';
+
+firebase.initializeApp(firebaseConfig);
 
 export default class App extends React.Component {
   render() {
@@ -16,6 +20,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+    justifyContent: 'center'
+  }
 });
