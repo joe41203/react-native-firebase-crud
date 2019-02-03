@@ -12,35 +12,29 @@ import {
   Text
 } from 'native-base';
 import firebase from 'firebase';
-// 追加
-import { TouchableOpacity } from 'react-native';
 
-export default class SignUp extends React.Component {
+export default class Login extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: '',
       email: '',
       password: ''
     };
   }
 
-  handleSignUp = () => {
+  handleLogin = () => {
     const { email, password } = this.state;
 
     firebase
       .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(user => {
+      .signInWithEmailAndPassword(email, password)
+      .then(response => {
         this.props.navigation.navigate('Home');
       })
-      .catch(error => alert(error));
-  };
-
-  // 追加
-  handleShowLogin = () => {
-    this.props.navigation.navigate('Login');
+      .catch(error => {
+        alert(error.message);
+      });
   };
 
   render() {
@@ -48,20 +42,12 @@ export default class SignUp extends React.Component {
       <Container>
         <Header>
           <Body>
-            <Title>Sign Up</Title>
+            <Title>Login</Title>
           </Body>
         </Header>
 
         <Content>
           <Form>
-            <Item>
-              <Input
-                placeholder='Username'
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                onChangeText={username => this.setState({ username })}
-              />
-            </Item>
             <Item>
               <Input
                 placeholder='Email'
@@ -78,14 +64,9 @@ export default class SignUp extends React.Component {
                 onChangeText={password => this.setState({ password })}
               />
             </Item>
-            <Button full onPress={this.handleSignUp}>
-              <Text>SignUp</Text>
+            <Button block onPress={this.handleLogin}>
+              <Text>Login</Text>
             </Button>
-            {/* 追加 */}
-            <TouchableOpacity onPress={this.handleShowLogin}>
-              <Text>Sign In</Text>
-            </TouchableOpacity>
-            {/* ここまで */}
           </Form>
         </Content>
       </Container>
