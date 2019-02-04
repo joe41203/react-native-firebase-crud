@@ -1,14 +1,11 @@
 import React from 'react';
 import { View } from 'native-base';
 import { ActivityIndicator, StyleSheet } from 'react-native';
-// 追加
 import firebase from 'firebase';
 
 export default class Loading extends React.Component {
-  // 追加
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      console.log(this.props);
       this.props.navigation.navigate(user ? 'Home' : 'SignUp');
     });
   }

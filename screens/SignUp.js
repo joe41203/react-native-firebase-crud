@@ -11,16 +11,15 @@ import {
   Button,
   Text
 } from 'native-base';
+import { View } from 'react-native';
 import firebase from 'firebase';
-// 追加
-import { TouchableOpacity } from 'react-native';
+import FacebookConfig from '../config/facebook';
 
 export default class SignUp extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: '',
       email: '',
       password: ''
     };
@@ -35,12 +34,45 @@ export default class SignUp extends React.Component {
       .then(user => {
         this.props.navigation.navigate('Home');
       })
-      .catch(error => alert(error));
+      .catch(error => {
+        console.log(error);
+        alert('不正なメールアドレスまたはパスワードです');
+      });
+  };
+
+  handleLogin = () => {
+    const { email, password } = this.state;
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(response => {
+        this.props.navigation.navigate('Home');
+      })
+      .catch(error => {
+        console.log(error.message);
+        alert('ログイン情報を正しく入力してください');
+      });
   };
 
   // 追加
-  handleShowLogin = () => {
-    this.props.navigation.navigate('Login');
+  handleFBLogin = async () => {
+    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
+      FacebookConfig.ApplicationKey,
+      { permissions: ['public_profile'] }
+    );
+    if (type === 'success') {
+      const credential = firebase.auth.FacebookAuthProvider.credential(token);
+      firebase
+        .auth()
+        .signInAndRetrieveDataWithCredential(credential)
+        .then(user => {
+          console.log('connected to firebase');
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
   };
 
   render() {
@@ -54,14 +86,6 @@ export default class SignUp extends React.Component {
 
         <Content>
           <Form>
-            <Item>
-              <Input
-                placeholder='Username'
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                onChangeText={username => this.setState({ username })}
-              />
-            </Item>
             <Item>
               <Input
                 placeholder='Email'
@@ -78,14 +102,21 @@ export default class SignUp extends React.Component {
                 onChangeText={password => this.setState({ password })}
               />
             </Item>
-            <Button full onPress={this.handleSignUp}>
-              <Text>SignUp</Text>
-            </Button>
-            {/* 追加 */}
-            <TouchableOpacity onPress={this.handleShowLogin}>
-              <Text>Sign In</Text>
-            </TouchableOpacity>
-            {/* ここまで */}
+            <View style={{ padding: 10 }}>
+              <Button full success onPress={this.handleSignUp}>
+                <Text>SignUp</Text>
+              </Button>
+            </View>
+            <View style={{ padding: 10 }}>
+              <Button full success onPress={this.handleLogin}>
+                <Text>Login</Text>
+              </Button>
+            </View>
+            <View style={{ padding: 10 }}>
+              <Button full onPress={this.handleFBLogin}>
+                <Text>Facebook Login</Text>
+              </Button>
+            </View>
           </Form>
         </Content>
       </Container>
