@@ -55,7 +55,8 @@ export default class SignUp extends React.Component {
       });
   };
 
-  // 追加
+  // 参考
+  // https://docs.expo.io/versions/latest/sdk/facebook/
   handleFBLogin = async () => {
     const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
       FacebookConfig.ApplicationKey,
