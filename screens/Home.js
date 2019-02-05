@@ -7,7 +7,7 @@ export default class Home extends React.Component {
     firebase
       .auth()
       .signOut()
-      .then(result => alert('sign out success'))
+      .then(result => console.log('sign out success'))
       .catch(error => console.error(error));
   };
 

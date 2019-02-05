@@ -1,6 +1,8 @@
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import ProfileScreen from '../screens/Profile';
 import HomeScreen from '../screens/Home';
+import SettingScreen from '../screens/Setting';
+import SearchScreen from '../screens/Search';
 // 参考
 // https://reactnavigation.org/docs/en/stack-navigator.html#routeconfigs
 
@@ -12,7 +14,8 @@ const TabNavigator = createAppContainer(
     {
       Home: { screen: HomeScreen },
       Profile: { screen: ProfileScreen },
-      Setting: { screen: ProfileScreen }
+      Setting: { screen: SettingScreen },
+      Search: { screen: SearchScreen }
     },
     BottomTabNavigatorConfig
   )
