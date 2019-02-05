@@ -1,6 +1,6 @@
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 
-import HomeScreen from '../screens/Home';
+import TabNavigator from '../navigations/TabNavigator';
 import LoadingScreen from '../screens/Loading';
 import SignUpScreen from '../screens/SignUp';
 
@@ -11,7 +11,7 @@ const AuthenticationNavigator = createAppContainer(
     {
       Loading: { screen: LoadingScreen },
       SignUp: { screen: SignUpScreen },
-      Home: { screen: HomeScreen }
+      Home: { screen: TabNavigator }
     },
     {
       initialRouteName: 'Loading'
