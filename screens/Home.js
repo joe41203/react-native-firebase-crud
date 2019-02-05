@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { Button } from 'native-base';
 import firebase from 'firebase';
 
 export default class Home extends React.Component {
@@ -7,16 +8,16 @@ export default class Home extends React.Component {
     firebase
       .auth()
       .signOut()
-      .then(result => alert('sign out success'))
+      .then(result => console.log('sign out success'))
       .catch(error => console.error(error));
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={this.handleSignOut}>
+        <Button full danger onPress={this.handleSignOut}>
           <Text>Sign Out</Text>
-        </TouchableOpacity>
+        </Button>
       </View>
     );
   }
@@ -26,6 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    padding: 10
   }
 });
