@@ -14,7 +14,7 @@ import {
   Body,
   Right
 } from 'native-base';
-export default class Setting extends Component {
+export default class Liked extends Component {
   render() {
     return (
       <Container>

@@ -2,8 +2,8 @@ import React from 'react';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import ProfileScreen from '../screens/Profile';
 import HomeScreen from '../screens/Home';
-import SettingScreen from '../screens/Setting';
 import SearchScreen from '../screens/Search';
+import LikedScreen from '../screens/Liked';
 import Icon from '@expo/vector-icons/FontAwesome';
 
 // 参考
@@ -41,16 +41,16 @@ const TabNavigator = createAppContainer(
           )
         })
       },
-      Profile: {
-        screen: ProfileScreen,
+      Likeed: {
+        screen: LikedScreen,
         navigationOptions: () => ({
           tabBarIcon: ({ tintColor }) => (
             <Icon name='heart' color={tintColor} size={24} />
           )
         })
       },
-      Setting: {
-        screen: SettingScreen,
+      Profile: {
+        screen: ProfileScreen,
         navigationOptions: () => ({
           tabBarIcon: ({ tintColor }) => (
             <Icon name='user' color={tintColor} size={24} />
