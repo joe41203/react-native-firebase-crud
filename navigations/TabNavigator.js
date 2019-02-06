@@ -5,6 +5,7 @@ import HomeScreen from '../screens/Home';
 import SearchScreen from '../screens/Search';
 import LikedScreen from '../screens/Liked';
 import Icon from '@expo/vector-icons/FontAwesome';
+import { TextInput } from 'react-native';
 
 // 参考
 // https://reactnavigation.org/docs/en/stack-navigator.html#routeconfigs
