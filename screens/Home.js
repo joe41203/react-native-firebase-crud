@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Body, Title } from 'native-base';
-import PostedCard from '../components/PostedCard';
+import PostedCard from '../containers/PostedCard';
 export default class Home extends Component {
   render() {
     return (
