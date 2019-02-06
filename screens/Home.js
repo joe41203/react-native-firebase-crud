@@ -1,33 +1,21 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Button } from 'native-base';
-import firebase from 'firebase';
-
-export default class Home extends React.Component {
-  handleSignOut = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(result => console.log('sign out success'))
-      .catch(error => console.error(error));
-  };
-
+import React, { Component } from 'react';
+import { Container, Header, Content, Body, Title } from 'native-base';
+import PostedCard from '../components/PostedCard';
+export default class Home extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Button full danger onPress={this.handleSignOut}>
-          <Text>Sign Out</Text>
-        </Button>
-      </View>
+      <Container>
+        <Header>
+          <Body>
+            <Title>Sign Up</Title>
+          </Body>
+        </Header>
+        <Content>
+          {[...Array(5)].map((_, i) => (
+            <PostedCard key={i} />
+          ))}
+        </Content>
+      </Container>
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 10
-  }
-});

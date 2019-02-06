@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import firebase from 'firebase';
+import { Button } from 'native-base';
 
 export default class Profile extends Component {
+  handleSignOut = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(result => console.log('sign out success'))
+      .catch(error => console.error(error));
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -25,6 +35,9 @@ export default class Profile extends Component {
             <TouchableOpacity style={styles.buttonContainer}>
               <Text>Opcion 2</Text>
             </TouchableOpacity>
+            <Button full danger onPress={this.handleSignOut}>
+              <Text>Sign Out</Text>
+            </Button>
           </View>
         </View>
       </View>
