@@ -25,11 +25,11 @@ const TabNavigator = createAppContainer(
           )
         })
       },
-      Profile: {
-        screen: ProfileScreen,
+      Search: {
+        screen: SearchScreen,
         navigationOptions: () => ({
           tabBarIcon: ({ tintColor }) => (
-            <Icon name='heart' color={tintColor} size={24} />
+            <Icon name='search' color={tintColor} size={24} />
           )
         })
       },
@@ -41,19 +41,19 @@ const TabNavigator = createAppContainer(
           )
         })
       },
+      Profile: {
+        screen: ProfileScreen,
+        navigationOptions: () => ({
+          tabBarIcon: ({ tintColor }) => (
+            <Icon name='heart' color={tintColor} size={24} />
+          )
+        })
+      },
       Setting: {
         screen: SettingScreen,
         navigationOptions: () => ({
           tabBarIcon: ({ tintColor }) => (
-            <Icon name='lock' color={tintColor} size={24} />
-          )
-        })
-      },
-      Search: {
-        screen: SearchScreen,
-        navigationOptions: () => ({
-          tabBarIcon: ({ tintColor }) => (
-            <Icon name='bookmark' color={tintColor} size={24} />
+            <Icon name='user' color={tintColor} size={24} />
           )
         })
       }
