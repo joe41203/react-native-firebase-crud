@@ -12,12 +12,31 @@ import {
   Right,
   Button
 } from 'native-base';
+import { RefreshControl } from 'react-native';
+
 export default class Liked extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      refreshing: false
+    };
+  }
+
+  _onRefresh = () => {
+    this.setState({ refreshing: true });
+    setTimeout(() => this.setState({ refreshing: false }), 1000);
+  };
+
   render() {
     return (
       <Container>
         <Header />
         <Content>
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh}
+          />
           {[...Array(20)].map((_, i) => {
             return (
               <List key={i}>

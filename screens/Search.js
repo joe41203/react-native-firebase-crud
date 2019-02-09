@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Input, Item, Icon } from 'native-base';
-import { Dimensions, Image } from 'react-native';
+import { Dimensions, Image, RefreshControl } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class Search extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      refreshing: false
+    };
   }
+
+  _onRefresh = () => {
+    this.setState({ refreshing: true });
+    setTimeout(() => this.setState({ refreshing: false }), 1000);
+  };
 
   render() {
     const { width } = Dimensions.get('window');
@@ -32,6 +41,10 @@ export default class Search extends Component {
           </Item>
         </Header>
         <Content>
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh}
+          />
           <Grid>
             {[...Array(10)].map((_, i) => {
               return (
