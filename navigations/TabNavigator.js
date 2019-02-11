@@ -4,14 +4,14 @@ import ProfileScreen from '../screens/Profile';
 import HomeScreen from '../screens/Home';
 import SearchScreen from '../screens/Search';
 import LikedScreen from '../screens/Liked';
+import PictureScreen from '../screens/Picture';
 import Icon from '@expo/vector-icons/FontAwesome';
-import { TextInput } from 'react-native';
 
 // 参考
 // https://reactnavigation.org/docs/en/stack-navigator.html#routeconfigs
 
 const BottomTabNavigatorConfig = {
-  initialRouteName: 'Home',
+  initialRouteName: 'Profile',
   tabBarOptions: { showLabel: false }
 };
 
@@ -35,7 +35,7 @@ const TabNavigator = createAppContainer(
         })
       },
       Adding: {
-        screen: () => null,
+        screen: PictureScreen,
         navigationOptions: () => ({
           tabBarIcon: ({ tintColor }) => (
             <Icon name='plus' color={tintColor} size={24} />
