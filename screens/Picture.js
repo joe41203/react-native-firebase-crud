@@ -14,10 +14,6 @@ export default class CameraView extends React.Component {
     this.setState({ hasCameraPermission: status === 'granted' });
   }
 
-  setPhoto(photo) {
-    this.setState({ photo: photo });
-  }
-
   render() {
     const { hasCameraPermission } = this.state;
     if (hasCameraPermission === null) {
@@ -37,14 +33,14 @@ export default class CameraView extends React.Component {
           <Button
             style={{ flex: 1 }}
             title='snap!'
-            onPress={photo => {
+            onPress={() => {
               if (this.camera) {
                 this.camera.takePictureAsync().then(photo => {
                   // カメラオブジェクト取得
-                  this.setPhoto(photo);
+                  this.setState({ photo: photo });
                   // 三秒後にモーダルを閉じる
                   setTimeout(() => {
-                    this.setPhoto(null);
+                    this.setState({ photo: null });
                   }, 3000);
                 });
               }
