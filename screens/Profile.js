@@ -9,7 +9,6 @@ import {
   Content,
   Button,
   Icon,
-  Segment,
   Thumbnail,
   Tab,
   Tabs,
@@ -17,6 +16,7 @@ import {
 } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Image, Dimensions } from 'react-native';
+import Lightbox from 'react-native-lightbox';
 
 export default class Profile extends Component {
   handleSignOut = () => {
@@ -101,13 +101,16 @@ export default class Profile extends Component {
                       margin: 1
                     }}
                   >
-                    <Image
-                      style={{ height: width / 3, flex: 1 }}
-                      source={{
-                        uri:
-                          'https://bootdey.com/img/Content/avatar/avatar3.png'
-                      }}
-                    />
+                    <Lightbox>
+                      <Image
+                        style={{ height: width / 3, flex: 1 }}
+                        resizeMode='contain'
+                        source={{
+                          uri:
+                            'https://bootdey.com/img/Content/avatar/avatar3.png'
+                        }}
+                      />
+                    </Lightbox>
                   </Col>
                   <Col
                     style={{
@@ -115,13 +118,16 @@ export default class Profile extends Component {
                       margin: 1
                     }}
                   >
-                    <Image
-                      style={{ height: width / 3, flex: 1 }}
-                      source={{
-                        uri:
-                          'https://bootdey.com/img/Content/avatar/avatar2.png'
-                      }}
-                    />
+                    <Lightbox>
+                      <Image
+                        style={{ height: width / 3, flex: 1 }}
+                        resizeMode='contain'
+                        source={{
+                          uri:
+                            'https://bootdey.com/img/Content/avatar/avatar2.png'
+                        }}
+                      />
+                    </Lightbox>
                   </Col>
                   <Col
                     style={{
@@ -129,13 +135,16 @@ export default class Profile extends Component {
                       margin: 1
                     }}
                   >
-                    <Image
-                      style={{ height: width / 3, flex: 1 }}
-                      source={{
-                        uri:
-                          'https://bootdey.com/img/Content/avatar/avatar4.png'
-                      }}
-                    />
+                    <Lightbox>
+                      <Image
+                        style={{ height: width / 3, flex: 1 }}
+                        resizeMode='contain'
+                        source={{
+                          uri:
+                            'https://bootdey.com/img/Content/avatar/avatar1.png'
+                        }}
+                      />
+                    </Lightbox>
                   </Col>
                 </Row>
               );
