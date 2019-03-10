@@ -11,7 +11,7 @@ import Icon from '@expo/vector-icons/FontAwesome';
 // https://reactnavigation.org/docs/en/stack-navigator.html#routeconfigs
 
 const BottomTabNavigatorConfig = {
-  initialRouteName: 'Profile',
+  initialRouteName: 'Home',
   tabBarOptions: { showLabel: false }
 };
 
